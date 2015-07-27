@@ -1,6 +1,6 @@
 ##Introduction:
 
-This is a `ionic-toast` bower component which can be used with any Ionic framework's application.
+This is an `ionic-toast` bower component which can be used with any Ionic framework's application.
 
 [View Demo](http://rajeshwarpatlolla.github.io/ionic-toast-demo/demo/ "Demo") 
 
@@ -38,7 +38,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-toast']){
 4) In your controller, inject 'ionicToast'.
 
 ````javascript
-.controller('HomeCtrl', [$'scope', 'ionicToast', function($scope, ionicToast) {
+.controller('HomeCtrl', ['$scope', 'ionicToast', function($scope, ionicToast) {
   //code here
 }])
 ````
@@ -49,7 +49,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-toast']){
 <button class="button button-block" ng-click="showToast()">Show Toast at top with close</button>
 ````
 
-6) In your controller you have to define a function like below
+6) In your controller you have to define a function like below to show the toast
 
 ````javascript
 $scope.showToast = function(){
@@ -70,6 +70,15 @@ c) `stick` is the third argument, which takes either `true` or `false`.
 
 d) `time` is the fourth argument, which takes time in milliseconds. If the value is greater than 5000, then it will be considered as 5000(5 seconds) only.
 
+7) In your controller you have to define a function like below to hide the toast
+
+````javascript
+$scope.hideToast = function(){
+  ionicToast.hide();
+};
+````
+
+
 ##Screen Shots:
 
 Once you are successfully done with the above steps, you should be able to see the below screen shots.
@@ -88,8 +97,11 @@ Once you click on the button you should see the remaining screen shots.
 ### 1) v0.1.0
 The whole `ionic-toast` component functionality has been implemented, and it can be installed with the command `bower install ionic-toast --save`
 
+### 1) v0.1.1
+Bug Fix
+
 ##License:
-[MIT](https://github.com/rajeshwarpatlolla/ionic-toast/blob/master/LICENSE.MD "MIT")
+[MIT](https://github.com/rajeshwarpatlolla/ionic-toast/blob/master/LICENSE.md "MIT")
 
 ##Contact:
 gmail : rajeshwar.patlolla@gmail.com

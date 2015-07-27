@@ -27,7 +27,9 @@ angular.module('ionic-toast', ['ionic'])
             opacity: 0
           }
         };
+
         var toastTimeout;
+
         var toastPosition = {
           top: 'ionic_toast_top',
           middle: 'ionic_toast_middle',
