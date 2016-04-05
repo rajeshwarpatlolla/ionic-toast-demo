@@ -3,7 +3,7 @@ angular.module('starter')
   .config(function ($stateProvider, $urlRouterProvider, ionicToastProvider) {
 
     var config = {
-      position: 'top',
+      position: 'bottom',
       showClose: false,
       colorTheme: 'dark',
       timeOut: 2500

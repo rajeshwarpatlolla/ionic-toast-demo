@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope, ionicToast) {
 
     $scope.showToastTop = function(){
-      ionicToast.show('This is a toast at the top.', 'top', true, 2000);
+      ionicToast.show('This is a toast at the top.');
     };
 
     $scope.showToastMiddle = function(){

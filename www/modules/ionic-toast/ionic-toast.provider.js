@@ -4,7 +4,7 @@ angular.module('ionic-toast.provider', [])
   .provider('ionicToast', function () {
 
     var config = {
-      position: 'bottom',
+      position: 'top',
       showClose: false,
       colorTheme: 'dark',
       timeOut: 2000
@@ -59,8 +59,16 @@ angular.module('ionic-toast.provider', [])
         };
 
         provider.show = function (message, position, closeBtn, duration) {
+          console.log(message, position, closeBtn, duration, config);
 
-          if (!message || !position || !duration) return;
+          if (!message) return;
+
+          if (!position) {
+            position = config.position;
+          }
+          if (!duration) {
+            duration = config.timeOut;
+          }
 
           if (duration > 5000) duration = 5000;
 

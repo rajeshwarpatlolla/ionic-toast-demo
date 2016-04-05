@@ -7720,7 +7720,7 @@ a.button {
   height: 25px; }
 .ionic_toast .toast_close_icon {
   position: relative;
-  top: 1px; }
+  top: 0; }
 .ionic_toast .ionic_toast_sticky .ionic_toast_close {
   display: block; }
 .ionic_toast .ionic_toast_close:active {
