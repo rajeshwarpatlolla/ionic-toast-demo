@@ -6,8 +6,8 @@ angular.module('ionic-toast.provider', [])
     var config = {
       position: 'top',
       showClose: false,
-      colorTheme: 'dark',
-      timeOut: 2000
+      theme: 'dark',
+      timeOut: 4000
     };
 
     this.configIonicToast = function (inputObj) {
@@ -20,6 +20,7 @@ angular.module('ionic-toast.provider', [])
 
         console.log(config);
         var provider = {};
+        var $scope = $rootScope.$new();
 
         var defaultScope = {
           toastClass: '',
@@ -36,58 +37,52 @@ angular.module('ionic-toast.provider', [])
           bottom: 'ionic_toast_bottom'
         };
 
-        var toastScope = $rootScope.$new();
-        var toastTemplate = $compile($templateCache.get('ionic-toast/templates/ionic-toast.html'))(toastScope);
+        var toastTemplate = $compile($templateCache.get('ionic-toast/templates/ionic-toast.html'))($scope);
 
-        toastScope.ionicToast = defaultScope;
+        $scope.ionicToast = defaultScope;
 
         $document.find('body').append(toastTemplate);
 
         var toggleDisplayOfToast = function (display, opacity, callback) {
-          toastScope.ionicToast.toastStyle = {
+          $scope.ionicToast.toastStyle = {
             display: display,
             opacity: opacity
           };
-          toastScope.ionicToast.toastStyle.opacity = opacity;
+          $scope.ionicToast.toastStyle.opacity = opacity;
           callback();
         };
 
-        toastScope.hide = function () {
+        $scope.hideToast = function () {
           toggleDisplayOfToast('none', 0, function () {
             console.log('toast hidden');
           });
         };
 
-        provider.show = function (message, position, closeBtn, duration) {
-          console.log(message, position, closeBtn, duration, config);
+        provider.show = function (message, position, isSticky, duration) {
+          console.log(message, position, isSticky, duration, config);
 
           if (!message) return;
+          position = position || config.position;
+          duration = duration || config.timeOut;
 
-          if (!position) {
-            position = config.position;
-          }
-          if (!duration) {
-            duration = config.timeOut;
-          }
+          if (duration > 10000) duration = 10000;
 
-          if (duration > 5000) duration = 5000;
-
-          angular.extend(toastScope.ionicToast, {
-            toastClass: toastPosition[position] + ' ' + (closeBtn ? 'ionic_toast_sticky' : ''),
+          angular.extend($scope.ionicToast, {
+            toastClass: toastPosition[position] + ' ' + (isSticky ? 'ionic_toast_sticky' : ''),
             toastMessage: message
           });
 
           toggleDisplayOfToast('block', 1, function () {
-            if (closeBtn)  return;
+            if (isSticky)  return;
 
             $timeout(function () {
-              toastScope.hide();
+              $scope.hideToast();
             }, duration);
           });
         };
 
         provider.hide = function () {
-          toastScope.hide();
+          $scope.hideToast();
         };
 
         return provider;
