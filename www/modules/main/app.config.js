@@ -8,7 +8,7 @@ angular.module('starter')
       colorTheme: 'dark',
       timeOut: 2500
     };
-    ionicToastProvider.configIonicToast(config);
+    ionicToastProvider.configure(config);
 
     $stateProvider
 

@@ -3,24 +3,25 @@ angular.module('ionic-toast.provider', [])
 
   .provider('ionicToast', function () {
 
-    var config = {
+    var defaultConfig = {
       position: 'top',
       showClose: false,
       theme: 'dark',
       timeOut: 4000
     };
 
-    this.configIonicToast = function (inputObj) {
-      angular.extend(config, inputObj);
+    this.configure = function (inputObj) {
+      angular.extend(defaultConfig, inputObj);
     };
 
 
     this.$get = ['$compile', '$document', '$interval', '$rootScope', '$templateCache', '$timeout',
       function ($compile, $document, $interval, $rootScope, $templateCache, $timeout) {
 
-        console.log(config);
+        console.log(defaultConfig);
         var provider = {};
         var $scope = $rootScope.$new();
+        var toastTimer = defaultConfig.timeOut;
 
         var defaultScope = {
           toastClass: '',
@@ -59,11 +60,11 @@ angular.module('ionic-toast.provider', [])
         };
 
         provider.show = function (message, position, isSticky, duration) {
-          console.log(message, position, isSticky, duration, config);
+          console.log(message, position, isSticky, duration, defaultConfig);
 
           if (!message) return;
-          position = position || config.position;
-          duration = duration || config.timeOut;
+          position = position || defaultConfig.position;
+          duration = duration || defaultConfig.timeOut;
 
           if (duration > 10000) duration = 10000;
 
@@ -75,7 +76,7 @@ angular.module('ionic-toast.provider', [])
           toggleDisplayOfToast('block', 1, function () {
             if (isSticky)  return;
 
-            $timeout(function () {
+            toastTimer = $timeout(function () {
               $scope.hideToast();
             }, duration);
           });
