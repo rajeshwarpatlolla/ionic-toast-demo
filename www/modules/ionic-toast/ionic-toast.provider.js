@@ -14,7 +14,6 @@ angular.module('ionic-toast.provider', [])
       angular.extend(defaultConfig, inputObj);
     };
 
-
     this.$get = ['$compile', '$document', '$interval', '$rootScope', '$templateCache', '$timeout',
       function ($compile, $document, $interval, $rootScope, $templateCache, $timeout) {
 
