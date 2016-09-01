@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.showToastMiddle = function () {
-      ionicToast.show('This is a toast at the middle.', 'middle', false, 2500);
+      ionicToast.show('This is a toast at the middle.', 'middle', true);
     };
 
     $scope.showToastBottom = function () {
