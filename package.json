@@ -4,13 +4,14 @@
   "description": "ionic-toast: An Ionic project",
   "dependencies": {
     "bower": "^1.7.9",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
     "gulp-util": "^3.0.7",
-    "shelljs": "^0.7.0"
+    "shelljs": "^0.7.0",
+    "snyk": "^1.104.2"
   },
   "devDependencies": {},
   "cordovaPlugins": [
@@ -20,5 +21,10 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [],
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
