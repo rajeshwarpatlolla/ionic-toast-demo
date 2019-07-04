@@ -10,7 +10,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
     "gulp-util": "^3.0.7",
-    "shelljs": "^0.7.0"
+    "shelljs": "^0.7.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {},
   "cordovaPlugins": [
@@ -20,5 +21,10 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [],
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
